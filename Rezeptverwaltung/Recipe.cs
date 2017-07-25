@@ -8,30 +8,58 @@ namespace Rezeptverwaltung
 {
     class Recipe
     {
-        string name;
-        Dictionary<int,string> ingredients;
-        Dictionary<int, float> amounts;
-        Dictionary<int, string> units;
+        public string Name { get; private set; }
+        public Dictionary<int, string> Ingredients { get; private set; }
+        public Dictionary<int, float> Amounts { get; private set; }
+        public Dictionary<int, string> Units { get; private set; }
+        public DateTime LastTimeCooked { get; private set; }
+        public int CookedAmount { get; private set; }
+        public string Description { get; private set; }
+        public string Text { get; private set; }
+        public TimeSpan DaysSinceCooked { get { return DateTime.Today.Subtract(LastTimeCooked); } }
 
         public Recipe(string name)
         {
-            this.name = name;
-            ingredients = new Dictionary<int, string>();
-            amounts = new Dictionary<int, float>();
-            units = new Dictionary<int, string>();
+            Name = name;
+            Ingredients = new Dictionary<int, string>();
+            Amounts = new Dictionary<int, float>();
+            Units = new Dictionary<int, string>();
+            CookedAmount = 0;
+        }
+
+        public Recipe(string name, int cookedAmount, string description, string text, DateTime lastTimeCooked)
+        {
+            Name = name;
+            CookedAmount = cookedAmount;
+            Description = description;
+            Text = text;
+            LastTimeCooked = lastTimeCooked;
+            Ingredients = new Dictionary<int, string>();
+            Amounts = new Dictionary<int, float>();
+            Units = new Dictionary<int, string>();
+        }
+        public void InitializeDictionaries(Dictionary<int, string> ingredients, Dictionary<int, float> amounts, Dictionary<int, string> units)
+        {
+            Ingredients = ingredients;
+            Amounts = amounts;
+            Units = units;
         }
 
         public void AddIngredient(string name)
         {
-            ingredients.Add(ingredients.Count, name);
+            Ingredients.Add(Ingredients.Count, name);
         }
         public void AddAmount(float value)
         {
-            amounts.Add(amounts.Count, value);
+            Amounts.Add(Amounts.Count, value);
         }
         public void AddUnit(string name)
         {
-            units.Add(units.Count, name);
+            Units.Add(Units.Count, name);
+        }
+        public void SetLastTimeCooked(DateTime time)
+        {
+            LastTimeCooked = time;
         }
 
     }

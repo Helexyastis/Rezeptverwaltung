@@ -10,21 +10,43 @@ namespace Rezeptverwaltung
     class Manager
     {
         string pathToRecipes = @"D:\VSProjects\Rezeptverwaltung\Recipes.xml";
+        string pathToIngredients = @"D:\VSProject\Rezeptverwaltung\Ingredients.xml";
+        XmlDocument recipesXML;
+        XmlDocument ingredientsXML;
 
-        XmlDocument document;
+        public List<string> Ingredients { get; private set; }
         public Manager()
         {
-            if (!System.IO.File.Exists(pathToRecipes))
+
+            recipesXML = LoadXML(pathToRecipes,"recipes");
+            ingredientsXML = LoadXML(pathToIngredients,"ingredients");
+            Ingredients = new List<string>();
+            LoadIngredients();
+        }
+
+        public XmlDocument LoadXML(string path, string startNode)
+        {
+            XmlDocument doc = new XmlDocument();
+            if (!System.IO.File.Exists(path))
             {
-                System.IO.StreamWriter writer = System.IO.File.CreateText(pathToRecipes);
+                System.IO.StreamWriter writer = System.IO.File.CreateText(path);
                 writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-                writer.WriteLine("<recipes>");
-                writer.WriteLine("</recipes>");
+                writer.WriteLine("<" + startNode + ">");
+                writer.WriteLine("</" + startNode + ">");
                 writer.Close();
             }
-            document = new XmlDocument();
-            document.Load(pathToRecipes);
-            
+            doc = new XmlDocument();
+            doc.Load(path);
+            return doc;
         }
+        private void LoadIngredients()
+        {
+            XmlNodeList ingredients = ingredientsXML.SelectNodes("ingredients");
+            foreach(XmlNode ingredient in ingredients)
+            {
+                Ingredients.Add(ingredient.InnerText);
+            }
+        }
+
     }
 }
