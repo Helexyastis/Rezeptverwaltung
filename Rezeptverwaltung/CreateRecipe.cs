@@ -25,16 +25,40 @@ namespace Rezeptverwaltung
 
         private void tb_searchIngredients_TextChanged(object sender, EventArgs e)
         {
-            string search = tb_searchIngredients.Text;
-            if (!string.IsNullOrEmpty(search))
+            string search = tb_searchIngredients.Text.ToLower();
+
+            if (lb_ergs.Items.Count > 0)
+                lb_ergs.Items.Clear();
+
+                if (!string.IsNullOrEmpty(search))
             {
                 List<string> ergs = new List<string>();
                 ergs = manager.Ingredients.FindAll(i => i.StartsWith(search));
                 if(ergs.Count <= 2)
                 {
-                    ergs.AddRange(manager.Ingredients.FindAll(i => i.Contains(search)));
+                    ergs.AddRange(manager.Ingredients.FindAll(i => i.ToLower().Contains(search)));
+                    
                 }
+                lb_ergs.Items.AddRange(ergs.ToArray());
+            }
+            
+        }
 
+        private void b_createIngredient_Click(object sender, EventArgs e)
+        {
+            string ingredient = tb_createIngredient.Text;
+
+            if (!string.IsNullOrEmpty(ingredient))
+            {
+                try
+                {
+                    manager.AddIngredient(ingredient);
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                tb_createIngredient.Text = "";
+                MessageBox.Show("Zutat wurde gespeichert");
             }
         }
     }

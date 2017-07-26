@@ -9,8 +9,8 @@ namespace Rezeptverwaltung
 {
     class Manager
     {
-        string pathToRecipes = @"D:\VSProjects\Rezeptverwaltung\Recipes.xml";
-        string pathToIngredients = @"D:\VSProject\Rezeptverwaltung\Ingredients.xml";
+        string pathToRecipes = @"D:\VSProjects\Rezeptverwaltung\Rezeptverwaltung\Recipes.xml";
+        string pathToIngredients = @"D:\VSProjects\Rezeptverwaltung\Rezeptverwaltung\Ingredients.xml";
         XmlDocument recipesXML;
         XmlDocument ingredientsXML;
 
@@ -41,12 +41,34 @@ namespace Rezeptverwaltung
         }
         private void LoadIngredients()
         {
-            XmlNodeList ingredients = ingredientsXML.SelectNodes("ingredients");
+            XmlNodeList ingredients = ingredientsXML.SelectNodes("ingredients/ingredient");
             foreach(XmlNode ingredient in ingredients)
             {
                 Ingredients.Add(ingredient.InnerText);
             }
         }
+        public void AddIngredient(string name)
+        {
+            List<string> doubles = Ingredients.FindAll(i => i == name);
+            if (doubles.Count > 0)
+            {
+                throw new Exception("Zutat ist bereits angelegt.");
+            }
+            else
+            {
+                Ingredients.Add(name);
+                CreateteNode(ingredientsXML, ingredientsXML.SelectSingleNode("ingredients"), "ingredient", name);
 
+            }
+        }
+        private void CreateteNode(XmlDocument doc, XmlNode parent,string name,string value)
+        {
+            XmlNode toAdd = doc.CreateElement(name);
+            toAdd.InnerText = value;
+            parent.AppendChild(toAdd);
+            doc.Save(doc.BaseURI.Remove(0, "file:///".Length));
+            //"file:///D:/VSProjects/Rezeptverwaltung/Rezeptverwaltung/Ingredients.xml"
+            
+        }
     }
 }

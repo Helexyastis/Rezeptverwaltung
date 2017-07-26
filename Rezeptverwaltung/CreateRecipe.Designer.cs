@@ -47,6 +47,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tb_createIngredient = new System.Windows.Forms.TextBox();
+            this.b_createIngredient = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +100,7 @@
             this.textBox3.Location = new System.Drawing.Point(12, 173);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(546, 440);
+            this.textBox3.Size = new System.Drawing.Size(453, 440);
             this.textBox3.TabIndex = 5;
             // 
             // label2
@@ -145,13 +148,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.b_createIngredient);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.tb_createIngredient);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lb_ergs);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tb_searchIngredients);
-            this.groupBox1.Location = new System.Drawing.Point(564, 23);
+            this.groupBox1.Location = new System.Drawing.Point(471, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 227);
+            this.groupBox1.Size = new System.Drawing.Size(519, 227);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Zutaten";
@@ -167,7 +173,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(573, 275);
+            this.textBox4.Location = new System.Drawing.Point(480, 275);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(56, 20);
             this.textBox4.TabIndex = 12;
@@ -175,7 +181,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(570, 259);
+            this.label6.Location = new System.Drawing.Point(477, 259);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 12;
@@ -184,7 +190,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(763, 259);
+            this.label7.Location = new System.Drawing.Point(670, 259);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 13;
@@ -193,7 +199,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(636, 275);
+            this.comboBox1.Location = new System.Drawing.Point(543, 275);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 14;
@@ -201,7 +207,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(763, 275);
+            this.label8.Location = new System.Drawing.Point(670, 275);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 15;
@@ -210,11 +216,37 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(633, 259);
+            this.label9.Location = new System.Drawing.Point(540, 259);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(39, 13);
             this.label9.TabIndex = 16;
             this.label9.Text = "Einheit";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(269, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Zutat anlegen";
+            // 
+            // tb_createIngredient
+            // 
+            this.tb_createIngredient.Location = new System.Drawing.Point(272, 34);
+            this.tb_createIngredient.Name = "tb_createIngredient";
+            this.tb_createIngredient.Size = new System.Drawing.Size(231, 20);
+            this.tb_createIngredient.TabIndex = 12;
+            // 
+            // b_createIngredient
+            // 
+            this.b_createIngredient.Location = new System.Drawing.Point(428, 60);
+            this.b_createIngredient.Name = "b_createIngredient";
+            this.b_createIngredient.Size = new System.Drawing.Size(75, 23);
+            this.b_createIngredient.TabIndex = 14;
+            this.b_createIngredient.Text = "Anlegen";
+            this.b_createIngredient.UseVisualStyleBackColor = true;
+            this.b_createIngredient.Click += new System.EventHandler(this.b_createIngredient_Click);
             // 
             // CreateRecipe
             // 
@@ -267,5 +299,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button b_createIngredient;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tb_createIngredient;
     }
 }
