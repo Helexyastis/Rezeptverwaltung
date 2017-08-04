@@ -17,10 +17,15 @@ namespace Rezeptverwaltung
         public string Description { get; private set; }
         public string Text { get; private set; }
         public TimeSpan DaysSinceCooked { get { return DateTime.Today.Subtract(LastTimeCooked); } }
+        public int Rating { get; private set; }
+        public List<string> Categories { get; set; }
+        private int ratings = 0;
+        private int ratingsCount = 0;
 
         public Recipe(string name)
         {
             Name = name;
+            Categories = new List<string>();
             Ingredients = new Dictionary<int, string>();
             Amounts = new Dictionary<int, float>();
             Units = new Dictionary<int, string>();

@@ -40,6 +40,9 @@
             this.tb_searchIngredients = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.b_createIngredient = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tb_createIngredient = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,9 +50,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tb_createIngredient = new System.Windows.Forms.TextBox();
-            this.b_createIngredient = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,6 +162,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Zutaten";
             // 
+            // b_createIngredient
+            // 
+            this.b_createIngredient.Location = new System.Drawing.Point(428, 60);
+            this.b_createIngredient.Name = "b_createIngredient";
+            this.b_createIngredient.Size = new System.Drawing.Size(75, 23);
+            this.b_createIngredient.TabIndex = 14;
+            this.b_createIngredient.Text = "Anlegen";
+            this.b_createIngredient.UseVisualStyleBackColor = true;
+            this.b_createIngredient.Click += new System.EventHandler(this.b_createIngredient_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(269, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Zutat anlegen";
+            // 
+            // tb_createIngredient
+            // 
+            this.tb_createIngredient.Location = new System.Drawing.Point(272, 34);
+            this.tb_createIngredient.Name = "tb_createIngredient";
+            this.tb_createIngredient.Size = new System.Drawing.Size(231, 20);
+            this.tb_createIngredient.TabIndex = 12;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -221,32 +247,6 @@
             this.label9.Size = new System.Drawing.Size(39, 13);
             this.label9.TabIndex = 16;
             this.label9.Text = "Einheit";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(269, 18);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Zutat anlegen";
-            // 
-            // tb_createIngredient
-            // 
-            this.tb_createIngredient.Location = new System.Drawing.Point(272, 34);
-            this.tb_createIngredient.Name = "tb_createIngredient";
-            this.tb_createIngredient.Size = new System.Drawing.Size(231, 20);
-            this.tb_createIngredient.TabIndex = 12;
-            // 
-            // b_createIngredient
-            // 
-            this.b_createIngredient.Location = new System.Drawing.Point(428, 60);
-            this.b_createIngredient.Name = "b_createIngredient";
-            this.b_createIngredient.Size = new System.Drawing.Size(75, 23);
-            this.b_createIngredient.TabIndex = 14;
-            this.b_createIngredient.Text = "Anlegen";
-            this.b_createIngredient.UseVisualStyleBackColor = true;
-            this.b_createIngredient.Click += new System.EventHandler(this.b_createIngredient_Click);
             // 
             // CreateRecipe
             // 

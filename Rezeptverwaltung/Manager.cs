@@ -9,20 +9,30 @@ namespace Rezeptverwaltung
 {
     class Manager
     {
-        string pathToRecipes = @"D:\VSProjects\Rezeptverwaltung\Rezeptverwaltung\Recipes.xml";
-        string pathToIngredients = @"D:\VSProjects\Rezeptverwaltung\Rezeptverwaltung\Ingredients.xml";
+        string pathToRecipes = Form1.PATH+"\\Recipes.xml";
+        string pathToIngredients = Form1.PATH+"\\Ingredients.xml";
+        string pathToUnits = Form1.PATH + "\\Units.xml";
+        string pathToCategories = Form1.PATH + "\\Categories.xml";
         XmlDocument recipesXML;
         XmlDocument ingredientsXML;
-
+        XmlDocument unitsXML;
+        XmlDocument categoriesXML;
         public List<string> Ingredients { get; private set; }
+        public List<string> Categories { get; private set; }
+        public List<string> Units { get; set; }
         public Manager()
         {
-
+            
             recipesXML = LoadXML(pathToRecipes,"recipes");
             ingredientsXML = LoadXML(pathToIngredients,"ingredients");
+            unitsXML = LoadXML(pathToUnits, "units");
+            categoriesXML = LoadXML(pathToCategories, "categories");
             Ingredients = new List<string>();
-            LoadIngredients();
+            LoadAllItems(ingredientsXML, Ingredients, "ingredients", "ingredient");
+            LoadAllItems(categoriesXML, Categories, "categories", "category");
+            LoadAllItems(unitsXML, Units, "units", "unit");
         }
+
 
         public XmlDocument LoadXML(string path, string startNode)
         {
@@ -39,12 +49,12 @@ namespace Rezeptverwaltung
             doc.Load(path);
             return doc;
         }
-        private void LoadIngredients()
+        private void LoadAllItems(XmlDocument doc,List<string> list,string rootNode,string targetNode)
         {
-            XmlNodeList ingredients = ingredientsXML.SelectNodes("ingredients/ingredient");
-            foreach(XmlNode ingredient in ingredients)
+            XmlNodeList results = doc.SelectNodes(rootNode+"/"+targetNode);
+            foreach(XmlNode result in results)
             {
-                Ingredients.Add(ingredient.InnerText);
+                list.Add(result.InnerText);
             }
         }
         public void AddIngredient(string name)

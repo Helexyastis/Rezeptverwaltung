@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace Rezeptverwaltung
 {
+    
     public partial class Form1 : Form
     {
+        public const string PATH = @"C:\ProgramData\Chaos Solutions\Rezeptverwaltung";
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +24,11 @@ namespace Rezeptverwaltung
             CreateRecipe createRecipe = new CreateRecipe();
 
             createRecipe.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            System.IO.Directory.CreateDirectory(Path);
         }
     }
 }
